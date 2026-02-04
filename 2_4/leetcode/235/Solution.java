@@ -1,0 +1,15 @@
+class Solution {
+    private TreeNode dfs(TreeNode root, TreeNode p, TreeNode q){
+        if(root == null) return root;
+        if(p.val < root.val && q.val < root.val){
+            return dfs(root.left, p, q);
+        }
+        if(p.val > root.val && q.val > root.val){
+            return dfs(root.right, p, q);
+        }
+        return root;
+    }
+    public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+        return dfs(root, p, q);
+    }
+}
